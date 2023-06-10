@@ -17,6 +17,10 @@ jobs:
     env : 
       NODE_ENV: ${{secrets.NODE_ENV}}
       DATABASE_URL: ${{secrets.DATABASE_URL}}
+      NEXTAUTH_SECRET: ${{secrets.DATABASE_URL}}
+      NEXTAUTH_URL: ${{secrets.DATABASE_URL}}
+      DISCORD_CLIENT_ID: ""
+      DISCORD_CLIENT_SECRET: ""
       CI : true
 
     name : Build the Site
