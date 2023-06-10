@@ -16,7 +16,7 @@ jobs:
   build :
     env : 
       NODE_ENV: ${{secrets.NODE_ENV}}
-      SESSION_SECRET: ${{secrets.SESSION_SECRET}}
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
       CI : true
 
     name : Build the Site
