@@ -4,8 +4,8 @@ import TwitterIcon from "./icons/TwitterIcon";
 import SearchIcon from "./icons/SearchIcon";
 import NotificationIcon from "./icons/NotificationIcon";
 import ProfileIcon from "./icons/ProfileIcon";
-import SidebarItem from "./SideBarItem";
 import Button from "./Button";
+import SidebarItem from "./SidebarItem";
 
 const Sidebar: React.FC = () => {
   const sideItemData = [
