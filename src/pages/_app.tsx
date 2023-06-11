@@ -3,7 +3,7 @@ import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
 import { api } from "@/utils/api";
 import "@/styles/globals.css";
-import Layout from "@/components/icons/Layout";
+import Layout from "@/components/Layout";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -13,6 +13,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
     <SessionProvider session={session}>
       <Layout>
         <Component {...pageProps} />
+        <div id="portal"></div>
       </Layout>
     </SessionProvider>
   );
