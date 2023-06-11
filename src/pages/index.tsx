@@ -10,7 +10,6 @@ import LoginModals from "@/components/modals/LoginModals";
 import RegisterModals from "@/components/modals/RegisterModals";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const [isOpen, setIsOpen] = useState(true);
   return (
     <>
