@@ -4,9 +4,14 @@ import CrossIcon from "../icons/CrossIcon";
 import useLoginModal from "@/hooks/useLoginModals";
 import useRegisterModal from "@/hooks/useRegistrationModals";
 import Button from "../Button";
+import { signIn } from "next-auth/react";
+import Image from "next/image";
 import Modals from "./Modals";
 
-const RegisterModals = () => {
+interface RegisterModalProps {
+  providers?: any;
+}
+const RegisterModals: React.FC<RegisterModalProps> = ({ providers }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -35,8 +40,32 @@ const RegisterModals = () => {
     loginModal.onOpen();
   }, [loginModal, registerModal, isLoading]);
 
+
   const body = (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-7">
+      {providers && Object.values(providers).map((provider: any) => (
+        <div key={provider.name} className="flex items-center justify-center">
+          <button
+            onClick={() => signIn(provider.id)}
+            className="flex w-full items-center justify-center gap-5 rounded-full bg-twitter-white px-8 py-2 text-black"
+          >
+            <Image
+              src="/google-icon.png"
+              width={64}
+              height={64}
+              alt="Google Icon"
+              className="h-8 w-8"
+            />
+            Sign Up with {provider.name}
+          </button>
+        </div>
+      ))}
+      <div className="flex items-center justify-center gap-5">
+        <span className="w-1/3 border-[1px] border-slate-300" />
+        <p className="text-slate-300 ">Atau</p>
+        <span className="w-1/3 border-[1px] border-slate-300" />
+      </div>
+      <div className="flex w-full flex-col items-center justify-center gap-4">
       <TextInput
         type="text"
         required
@@ -69,6 +98,12 @@ const RegisterModals = () => {
         setValue={setPassword}
         disabled={false}
       />
+        <div className="flex w-full mt-3">
+          <Button color="white" onClick={onSubmit}>
+            Sign Up
+          </Button>
+        </div>
+      </div>
     </div>
   );
 
@@ -76,27 +111,23 @@ const RegisterModals = () => {
     <div className="flex flex-row items-center justify-between">
       {/* title */}
       <h2 className="font-gantari-b items-center text-center text-2xl font-bold leading-10 tracking-wider sm:items-start sm:text-left">
-        Login
+        Sign Up
       </h2>
       {/* Close cross icon */}
-      <button onClick={registerModal.onClose} className=" h-5 w-5">
+      <button onClick={loginModal.onClose} className=" h-5 w-5">
         <CrossIcon style="w-full h-full fill-white" />
       </button>
     </div>
   );
   const footer = (
-    <div className="flex w-full flex-col items-center justify-center gap-4">
-      <Button color="white" onClick={onSubmit}>
-        Submit
-      </Button>
-      <p className="text-slate-500">
-        First using Twitter ?{" "}
-        <span className="text-white" onClick={onToggle}>
-          Create an account
-        </span>
-      </p>
-    </div>
+    <p className="flex gap-2 text-white items-center justify-center">
+      First using Twitter ?{" "}
+      <button onClick={onToggle}>
+        <span className="text-twitter-blue">Create an account</span>
+      </button>
+    </p>
   );
+
   return (
     <Modals
       isOpen={registerModal.isOpen}

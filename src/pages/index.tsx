@@ -5,12 +5,17 @@ import Link from "next/link";
 import { api } from "@/utils/api";
 import TwitterIcon from "@/components/icons/TwitterIcon";
 import Modals from "@/components/modals/Modals";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginModals from "@/components/modals/LoginModals";
 import RegisterModals from "@/components/modals/RegisterModals";
 
 const Home: NextPage = () => {
+  const { data, status } = useSession({ required: true });
   const [isOpen, setIsOpen] = useState(true);
+  console.log(data, status);
+  if (status == "loading") {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Head>
@@ -19,9 +24,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        p
-        <LoginModals />
-        <RegisterModals />
+        <button
+          onClick={() => {
+            signOut();
+          }}
+        >
+          Logout
+        </button>
+       
       </main>
     </>
   );
