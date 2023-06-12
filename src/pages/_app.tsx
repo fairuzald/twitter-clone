@@ -6,6 +6,7 @@ import "@/styles/globals.css";
 import Layout from "@/components/Layout";
 import type { Session } from "next-auth";
 import type { ReactElement, ReactNode } from "react";
+import { Toaster } from "react-hot-toast";
 
 export type NextPageWithLayout<P = Record<string, never>, IP = P> = NextPage<
   P,
@@ -26,6 +27,7 @@ const MyApp = ({
   if (Component.getLayout) {
     return (
       <SessionProvider session={pageProps.session}>
+        <Toaster />
         {Component.getLayout(
           <>
             <Component {...pageProps} />
@@ -38,6 +40,7 @@ const MyApp = ({
 
   return (
     <SessionProvider session={pageProps.session}>
+      <Toaster />
       <Layout>
         <Component {...pageProps} />
         <div id="portal"></div>

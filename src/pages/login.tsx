@@ -61,26 +61,29 @@ export default function Login({
               <div className="flex flex-col gap-2 pr-32">
                 {/* Mapping button Provider */}
                 {providers &&
-                  Object.values(providers).map((provider) => (
-                    <div
-                      key={provider.name}
-                      className="flex items-center justify-center"
-                    >
-                      <button
-                        onClick={() => signIn(provider.id)}
-                        className="flex w-full items-center justify-center gap-5 rounded-full bg-twitter-white px-8 py-2 text-black"
-                      >
-                        <Image
-                          src="/google-icon.png"
-                          width={64}
-                          height={64}
-                          alt="Google Icon"
-                          className="h-8 w-8"
-                        />
-                        Sign in with {provider.name}
-                      </button>
-                    </div>
-                  ))}
+                  Object.values(providers).map(
+                    (provider) =>
+                      provider.name !== "Credentials" && (
+                        <div
+                          key={provider.name}
+                          className="flex items-center justify-center"
+                        >
+                          <button
+                            onClick={() => signIn(provider.id)}
+                            className="flex w-full items-center justify-center gap-5 rounded-full bg-twitter-white px-8 py-2 text-black"
+                          >
+                            <Image
+                              src="/google-icon.png"
+                              width={64}
+                              height={64}
+                              alt="Google Icon"
+                              className="h-8 w-8"
+                            />
+                            Sign in with {provider.name}
+                          </button>
+                        </div>
+                      )
+                  )}
                 {/* Text or */}
                 <div className="flex items-center justify-center gap-5">
                   <span className="w-1/3 border-[1px] border-slate-300" />
@@ -106,19 +109,20 @@ export default function Login({
             {/* Login Section */}
             <div className="flex flex-col gap-2">
               {/* Persuative to login */}
-              <h3 className="font-semibold text-xl">Already have an account?</h3>
+              <h3 className="text-xl font-semibold">
+                Already have an account?
+              </h3>
               {/* Login BUtton */}
               <div className="pr-32">
-
-              <Button
-                color="trans-blue"
-                onClick={() => {
-                  loginModal.onOpen();
-                }}
+                <Button
+                  color="trans-blue"
+                  onClick={() => {
+                    loginModal.onOpen();
+                  }}
                 >
-                Log In
-              </Button>
-                </div>
+                  Log In
+                </Button>
+              </div>
             </div>
           </div>
         </div>

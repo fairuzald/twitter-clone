@@ -6,28 +6,37 @@ import NotificationIcon from "./icons/NotificationIcon";
 import ProfileIcon from "./icons/ProfileIcon";
 import Button from "./Button";
 import SidebarItem from "./SidebarItem";
+import useCurrentUser from "@/hooks/useCurrentUser";
+import LogoutIcon from "./icons/LogoutIcon";
+import { signOut } from "next-auth/react";
 
 const Sidebar: React.FC = () => {
+  const { data: currentUser } = useCurrentUser();
+  console.log(currentUser);
   const sideItemData = [
     {
       href: "/",
       icon: <HomeIcon style="w-6 h-6 fill-twitter-white" />,
       text: "Home",
+      auth: false,
     },
     {
       href: "/",
       icon: <SearchIcon style="w-6 h-6 fill-twitter-white" />,
       text: "Search",
+      auth : true
     },
     {
       href: "/",
       icon: <NotificationIcon style="w-6 h-6 fill-twitter-white" />,
       text: "Notification",
+      auth: true
     },
     {
       href: "/",
       icon: <ProfileIcon style="w-6 h-6 fill-twitter-white" />,
       text: "Profile",
+      auth:true,
     },
   ];
   return (
@@ -47,10 +56,29 @@ const Sidebar: React.FC = () => {
               linkUrl={item.href}
               icon={item.icon}
               text={item.text}
+              auth={item.auth}
             />
           ))}
 
-          <Button color="blue" onClick={()=>{console.log("p")}}>Tweet</Button>
+          <Button
+            color="blue"
+            onClick={() => {
+              console.log("p");
+            }}
+          >
+            Tweet
+          </Button>
+          {currentUser && (
+            <SidebarItem
+              onClick={() => {
+                signOut();
+              }}
+              icon={
+                <LogoutIcon style="w-6 h-6 fill-twitter-white rotate-180" />
+              }
+              text="Logout"
+            />
+          )}
         </div>
       </div>
     </div>

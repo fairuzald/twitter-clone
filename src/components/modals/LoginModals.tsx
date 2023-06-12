@@ -37,23 +37,30 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
 
   const body = (
     <div className="flex flex-col gap-7">
-      {providers&&Object.values(providers).map((provider: any) => (
-        <div key={provider.name} className="flex items-center justify-center">
-          <button
-            onClick={() => signIn(provider.id)}
-            className="flex w-full items-center justify-center gap-5 rounded-full bg-twitter-white px-8 py-2 text-black"
-          >
-            <Image
-              src="/google-icon.png"
-              width={64}
-              height={64}
-              alt="Google Icon"
-              className="h-8 w-8"
-            />
-            Log in with {provider.name}
-          </button>
-        </div>
-      ))}
+      {providers &&
+        Object.values(providers).map(
+          (provider: any) =>
+            provider.name !== "Credentials" && (
+              <div
+                key={provider.name}
+                className="flex items-center justify-center"
+              >
+                <button
+                  onClick={() => signIn(provider.id)}
+                  className="flex w-full items-center justify-center gap-5 rounded-full bg-twitter-white px-8 py-2 text-black"
+                >
+                  <Image
+                    src="/google-icon.png"
+                    width={64}
+                    height={64}
+                    alt="Google Icon"
+                    className="h-8 w-8"
+                  />
+                  Log in with {provider.name}
+                </button>
+              </div>
+            )
+        )}
       <div className="flex items-center justify-center gap-5">
         <span className="w-1/3 border-[1px] border-slate-300" />
         <p className="text-slate-300 ">Or</p>
@@ -76,7 +83,7 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
           setValue={setPassword}
           disabled={false}
         />
-        <div className="flex w-full mt-3">
+        <div className="mt-3 flex w-full">
           <Button color="white" onClick={onSubmit}>
             Log in
           </Button>
@@ -98,7 +105,7 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
     </div>
   );
   const footer = (
-    <p className="flex gap-2 text-white items-center justify-center">
+    <p className="flex items-center justify-center gap-2 text-white">
       First using Twitter ?{" "}
       <button onClick={onToggle}>
         <span className="text-twitter-blue">Create an account</span>

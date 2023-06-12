@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { type GetServerSidePropsContext } from "next";
+import CredentialsProvider from "next-auth/providers/credentials";
 import {
   getServerSession,
   type NextAuthOptions,
@@ -8,6 +9,7 @@ import {
 } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { env } from "@/env.mjs";
+import bcrypt from "bcrypt";
 import { prisma } from "@/server/db";
 
 /**
@@ -37,27 +39,49 @@ declare module "next-auth" {
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions: NextAuthOptions = {
-  
-  // adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma),
   providers: [
+    CredentialsProvider({
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials, req) {
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Invalid credentials");
+        }
+        const user = await prisma.user.findUnique({
+          where: { email: credentials.email },
+        });
+        if (!user || !user.hashedPassword) {
+          throw new Error("Invalid credentials");
+        }
+        const isMatch = await bcrypt.compare(
+          credentials.password,
+          user.hashedPassword
+        );
+        if (!isMatch) {
+          throw new Error("Invalid credentials");
+        }
+        return user;
+      },
+    }),
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
-    /**
-     * ...add more providers here.
-     *
-     * Most other providers require a bit more work than the Google provider. For example, the
-     * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
-     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
-     *
-     * @see https://next-auth.js.org/providers/github
-     */
   ],
+  debug: process.env.NODE_ENV !== "development",
+  session: {
+    strategy: "jwt",
+  },
+  jwt: {
+    secret: process.env.NEXTAUTH_JWT_SECRET,
+  },
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",
   },
-  secret: env.JWT_SECRET,
 };
 
 /**
