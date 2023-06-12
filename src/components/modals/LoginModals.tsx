@@ -7,6 +7,7 @@ import Button from "../Button";
 import Modals from "./Modals";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
+import { toast } from "react-hot-toast";
 interface LoginModalProps {
   providers?: any;
 }
@@ -16,6 +17,7 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
   const [isLoading, setIsLoading] = useState(false);
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
+  console.log(email, password);
   const onToggle = useCallback(() => {
     if (isLoading) {
       return;
@@ -24,16 +26,19 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
     loginModal.onClose();
     registerModal.onOpen();
   }, [loginModal, registerModal, isLoading]);
-  const onSubmit = useCallback(() => {
+  const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
+      await signIn("credentials", { email, password });
+      toast.success("Logged in"),
+      loginModal.onClose();
     } catch (err) {
       console.log(err);
     } finally {
       setIsLoading(false);
       loginModal.onOpen();
     }
-  }, [loginModal]);
+  }, [loginModal, email, password]);
 
   const body = (
     <div className="flex flex-col gap-7">

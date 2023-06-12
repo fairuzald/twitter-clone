@@ -1,5 +1,4 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
-import useLoginModal from "@/hooks/useLoginModals";
 import Link from "next/link";
 interface SidebarItemProps {
   onClick?: () => void;
@@ -16,7 +15,6 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   auth,
 }) => {
   const { data: currentUser } = useCurrentUser();
-  const loginModal = useLoginModal();
   return auth && !currentUser ? (
     <Link
       href="/login"

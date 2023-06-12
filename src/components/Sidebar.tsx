@@ -24,19 +24,19 @@ const Sidebar: React.FC = () => {
       href: "/",
       icon: <SearchIcon style="w-6 h-6 fill-twitter-white" />,
       text: "Search",
-      auth : true
+      auth: true,
     },
     {
       href: "/",
       icon: <NotificationIcon style="w-6 h-6 fill-twitter-white" />,
       text: "Notification",
-      auth: true
+      auth: true,
     },
     {
       href: "/",
       icon: <ProfileIcon style="w-6 h-6 fill-twitter-white" />,
       text: "Profile",
-      auth:true,
+      auth: true,
     },
   ];
   return (
