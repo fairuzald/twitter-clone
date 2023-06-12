@@ -12,7 +12,7 @@ import RegisterModals from "@/components/modals/RegisterModals";
 const Home: NextPage = () => {
   const { data, status } = useSession();
   const [isOpen, setIsOpen] = useState(true);
-  console.log(data, status);
+  // console.log(data, status);
   if (status == "loading") {
     return <div>Loading...</div>;
   }

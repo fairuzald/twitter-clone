@@ -17,7 +17,6 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 }) => {
   // const { data: currentUser } = useCurrentUser();
   const { data } = useSession();
-  console.log(data);
   return auth && !data ? (
     <Link
       href="/login"
