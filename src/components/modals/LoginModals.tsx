@@ -56,7 +56,7 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
       ))}
       <div className="flex items-center justify-center gap-5">
         <span className="w-1/3 border-[1px] border-slate-300" />
-        <p className="text-slate-300 ">Atau</p>
+        <p className="text-slate-300 ">Or</p>
         <span className="w-1/3 border-[1px] border-slate-300" />
       </div>
       <div className="flex w-full flex-col items-center justify-center gap-4">

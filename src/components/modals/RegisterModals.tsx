@@ -62,7 +62,7 @@ const RegisterModals: React.FC<RegisterModalProps> = ({ providers }) => {
       ))}
       <div className="flex items-center justify-center gap-5">
         <span className="w-1/3 border-[1px] border-slate-300" />
-        <p className="text-slate-300 ">Atau</p>
+        <p className="text-slate-300 ">Or</p>
         <span className="w-1/3 border-[1px] border-slate-300" />
       </div>
       <div className="flex w-full flex-col items-center justify-center gap-4">
@@ -114,7 +114,7 @@ const RegisterModals: React.FC<RegisterModalProps> = ({ providers }) => {
         Sign Up
       </h2>
       {/* Close cross icon */}
-      <button onClick={loginModal.onClose} className=" h-5 w-5">
+      <button onClick={registerModal.onClose} className=" h-5 w-5">
         <CrossIcon style="w-full h-full fill-white" />
       </button>
     </div>
