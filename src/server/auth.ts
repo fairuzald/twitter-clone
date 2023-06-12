@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
+// import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { type GetServerSidePropsContext } from "next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import {
@@ -11,6 +11,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { env } from "@/env.mjs";
 import bcrypt from "bcrypt";
 import { prisma } from "@/server/db";
+// import axios from "axios";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -39,7 +40,15 @@ declare module "next-auth" {
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  // adapter: PrismaAdapter(prisma),
+  callbacks: {
+    async signIn({ user }) {
+      if (user) {
+        return true;
+      }
+      return false;
+    },
+  },
   providers: [
     CredentialsProvider({
       credentials: {

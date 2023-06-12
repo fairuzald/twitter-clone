@@ -26,7 +26,7 @@ const RegisterModals: React.FC<RegisterModalProps> = ({ providers }) => {
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
-      await axios.post("api/register", { email, username, name, password });
+      await axios.post("/api/register", { email, username, name, password });
       toast.success("Account Created");
       signIn("credentials", { email, password });
       registerModal.onClose();

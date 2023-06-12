@@ -30,8 +30,7 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
     try {
       setIsLoading(true);
       await signIn("credentials", { email, password });
-      toast.success("Logged in"),
-      loginModal.onClose();
+      toast.success("Logged in"), loginModal.onClose();
     } catch (err) {
       console.log(err);
     } finally {
