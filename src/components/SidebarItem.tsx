@@ -1,6 +1,5 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
 interface SidebarItemProps {
   onClick?: () => void;
   linkUrl?: string;
@@ -15,9 +14,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   onClick,
   auth,
 }) => {
-  // const { data: currentUser } = useCurrentUser();
-  const { data } = useSession();
-  return auth && !data ? (
+  const { data: currentUser } = useCurrentUser();
+  return auth && !currentUser ? (
     <Link
       href="/login"
       className="flex w-fit items-center justify-center gap-4 rounded-full px-4 py-3 transition duration-300 hover:bg-[#181818]"

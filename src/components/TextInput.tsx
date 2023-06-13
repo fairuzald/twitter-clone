@@ -5,8 +5,8 @@ interface TextInputProps {
   placeholder: string;
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
-  disabled: boolean;
-  required: boolean;
+  disabled?: boolean;
+  required?: boolean;
 }
 const TextInput: React.FC<TextInputProps> = ({
   value,
