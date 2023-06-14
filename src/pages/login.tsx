@@ -3,7 +3,7 @@ import type {
   InferGetServerSidePropsType,
 } from "next";
 import Head from "next/head";
-import { getProviders, useSession } from "next-auth/react";
+import { getProviders } from "next-auth/react";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/server/auth";
 import Image from "next/image";
@@ -19,7 +19,6 @@ import useLoginModal from "@/hooks/useLoginModals";
 export default function Login({
   providers,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const { data, status } = useSession();
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   return (
