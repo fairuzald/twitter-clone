@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import ArrowIcon from "./icons/ArrowIcon";
 import { useRouter } from "next/router";
 interface HeaderProps {
-  showArrowButton: boolean;
+  showArrowButton?: boolean;
   label: string;
 }
 const Header: React.FC<HeaderProps> = ({ showArrowButton, label }) => {

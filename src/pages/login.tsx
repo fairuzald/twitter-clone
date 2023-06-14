@@ -3,13 +3,13 @@ import type {
   InferGetServerSidePropsType,
 } from "next";
 import Head from "next/head";
-import { getProviders, useSession } from "next-auth/react";
+import { getProviders } from "next-auth/react";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/server/auth";
 import Image from "next/image";
 import RegisterModals from "@/components/modals/RegisterModals";
 import LoginModals from "@/components/modals/LoginModals";
-import { ReactElement } from "react";
+import type { ReactElement } from "react";
 import { signIn } from "next-auth/react";
 import TwitterIcon from "@/components/icons/TwitterIcon";
 import Button from "@/components/Button";
@@ -19,8 +19,6 @@ import useLoginModal from "@/hooks/useLoginModals";
 export default function Login({
   providers,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const { data, status } = useSession();
-  console.log(data, status);
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   return (

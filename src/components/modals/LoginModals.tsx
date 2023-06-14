@@ -17,7 +17,6 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
   const [isLoading, setIsLoading] = useState(false);
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
-  console.log(email, password);
   const onToggle = useCallback(() => {
     if (isLoading) {
       return;

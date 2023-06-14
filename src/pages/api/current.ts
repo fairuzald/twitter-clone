@@ -12,7 +12,7 @@ export default async function handler(
 
   try {
     // Call the `serverAuth` function to authenticate the request and retrieve the currentUser.
-    const { currentUser } = await serverAuth(req);
+    const { currentUser } = await serverAuth(req, res);
 
     // Return a 200 status code and the currentUser as a JSON response.
     return res.status(200).json(currentUser);

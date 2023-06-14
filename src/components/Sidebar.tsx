@@ -8,11 +8,10 @@ import Button from "./Button";
 import SidebarItem from "./SidebarItem";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import LogoutIcon from "./icons/LogoutIcon";
-import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 
 const Sidebar: React.FC = () => {
-  const { data } = useSession();
+  const {data: currentUser} = useCurrentUser();
   const sideItemData = [
     {
       href: "/",
@@ -33,7 +32,7 @@ const Sidebar: React.FC = () => {
       auth: true,
     },
     {
-      href: "/",
+      href: `/users/${currentUser?.id}`,
       icon: <ProfileIcon style="w-6 h-6 fill-twitter-white" />,
       text: "Profile",
       auth: true,
@@ -68,7 +67,7 @@ const Sidebar: React.FC = () => {
           >
             Tweet
           </Button>
-          {data && (
+          {currentUser && (
             <SidebarItem
               onClick={() => {
                 signOut();
