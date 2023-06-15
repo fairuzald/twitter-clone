@@ -9,9 +9,10 @@ import SidebarItem from "./SidebarItem";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import LogoutIcon from "./icons/LogoutIcon";
 import { signOut } from "next-auth/react";
+import NotificationBellIcon from "./icons/NotificationBellIcon";
 
 const Sidebar: React.FC = () => {
-  const {data: currentUser} = useCurrentUser();
+  const { data: currentUser } = useCurrentUser();
   const sideItemData = [
     {
       href: "/",
@@ -26,8 +27,12 @@ const Sidebar: React.FC = () => {
       auth: true,
     },
     {
-      href: "/",
-      icon: <NotificationIcon style="w-6 h-6 fill-twitter-white" />,
+      href: "/notification",
+      icon: currentUser?.hasNotification ? (
+        <NotificationBellIcon style="w-6 h-6 m-0 p-0 fill-white" />
+      ) : (
+        <NotificationIcon style="w-6 h-6 m-0 p-0 fill-white" />
+      ),
       text: "Notification",
       auth: true,
     },
@@ -38,6 +43,7 @@ const Sidebar: React.FC = () => {
       auth: true,
     },
   ];
+
   return (
     <div className="my-4 flex w-fit flex-col items-center px-6 lg:w-[31%] lg:px-0">
       <div className="flex w-fit flex-col gap-5">
