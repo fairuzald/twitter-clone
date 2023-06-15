@@ -64,7 +64,7 @@ const PostItem = ({
                 <CommentIcon style="w-9 h-9 fill-neutral-500 hover:fill-twitter-blue p-2 hover:bg-twitter-blue hover:bg-opacity-20 rounded-full" />
               </button>
               <p className="px-1 hover:text-neutral-500">
-                {data?.comment?.length || 0}
+                {data?.comments?.length || 0}
               </p>
             </div>
             <div className="flex items-center justify-center text-neutral-500 hover:text-[#F91880]">

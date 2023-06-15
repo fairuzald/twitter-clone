@@ -15,20 +15,22 @@ const PostDetail = () => {
   if (isLoading) {
     return (
       <div className="flex h-full items-center justify-center">
-        <ClipLoader  color="#308CD8"
-        loading={isLoading}
-        size={70}
-        aria-label="Loading Spinner"
-        data-testid="loader"/>
+        <ClipLoader
+          color="#308CD8"
+          loading={isLoading}
+          size={70}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
       </div>
     );
   }
   return (
     <>
-        <Header showArrowButton label="Tweet"  />
+      <Header showArrowButton label="Tweet" />
       <PostItem data={post} />
-      <FormTweet postId={postId as string} isComment/>
       <CommentFeed comments={post?.comments} />
+      <FormTweet postId={postId as string} isComment />
     </>
   );
 };
