@@ -30,7 +30,7 @@ const PostDetail = () => {
       <Header showArrowButton label="Tweet" />
       <PostItem data={post} />
       <CommentFeed comments={post?.comments} />
-      <FormTweet postId={postId as string} isComment isCurrentUserLoading={isLoading} />
+      <FormTweet postId={postId as string} isComment isCurrentUserLoading={isLoading} buttonText="Reply" />
     </>
   );
 };

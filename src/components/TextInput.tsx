@@ -28,7 +28,7 @@ const TextInput: React.FC<TextInputProps> = ({
         onChange={(e) => {
           setValue(e.target.value);
         }}
-        className="peer h-full w-full resize-none bg-transparent px-4 opacity-100 outline-none ring-0 disabled:opacity-80"
+        className="peer h-full w-full text-xl resize-none bg-transparent px-4 opacity-100 outline-none ring-0 disabled:opacity-80"
       />
     </div>
   ) : (

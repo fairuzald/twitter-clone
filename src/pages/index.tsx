@@ -5,14 +5,6 @@ import RegisterModals from "@/components/modals/RegisterModals";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useLoginModal from "@/hooks/useLoginModals";
 import useRegisterModal from "@/hooks/useRegistrationModals";
-import { getServerSession } from "next-auth/next";
-
-import type {
-  GetServerSidePropsContext,
-  InferGetServerSidePropsType,
-} from "next";
-import { getProviders } from "next-auth/react";
-import { authOptions } from "@/server/auth";
 import FormTweet from "@/components/FormTweet";
 import PostFeed from "@/components/PostFeed";
 import PageHead from "@/components/PageHead";
@@ -32,6 +24,7 @@ const Home = () => {
         logoUrl="https://www.datocms-assets.com/102850/1686900586-logo-twitter-clone.png"
       />
       <Header label="Home" />
+      {/* Cliploader logic when try retrieve data useCurrentUser */}
       {isLoading ? (
         <div className="flex h-screen w-full items-center justify-center">
           <ClipLoader
@@ -43,15 +36,26 @@ const Home = () => {
           />
         </div>
       ) : (
+        // If the cliploader is done
         <main className="flex  flex-col bg-black bg-gradient-to-b">
+          {/* Action for logged in */}
           {currentUser ? (
             <div className="flex flex-col">
-              <div className="flex flex-col items-center justify-center gap-4 border-y border-twitter-border p-4">
-                <FormTweet currentUser={currentUser} isCurrentUserLoading={isLoading}/>
+              {/* // POST TWEET */}
+              <div className="flex flex-col items-center justify-center gap-4">
+                <FormTweet
+                buttonText="Tweet"
+                  currentUser={currentUser}
+                  isCurrentUserLoading={isLoading}
+                />
               </div>
-              <PostFeed />
+              {/* MAPPING TWEET POST */}
+              <div>
+                <PostFeed />
+              </div>
             </div>
           ) : (
+            // Action for not log in
             <div className="flex flex-col items-center justify-center gap-4 border-y border-twitter-border p-12">
               <h4 className="text-xl font-semibold text-white">
                 Welcome to Twitter
