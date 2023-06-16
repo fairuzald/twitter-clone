@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ showArrowButton, label, body }) => {
               <ArrowIcon style="w-5 h-5 fill-white rotate-180" />
             </button>
           )}
-          <h4 className="text-xl text-white">{label}</h4>
+          <h4 className="text-xl font-bold text-white">{label}</h4>
         </>
       ) : (
         body

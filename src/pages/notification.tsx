@@ -5,15 +5,33 @@ import useNotifications from "@/hooks/useNotification";
 import type { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 import { useEffect } from "react";
-
+import { ClipLoader } from "react-spinners";
 
 const Notifications = () => {
-  const { data: currentUser, mutate: mutateCurrentUser } = useCurrentUser();
-  const { data: fetchedNotifications = [] } = useNotifications(currentUser?.id);
+  const {
+    data: currentUser,
+    mutate: mutateCurrentUser,
+    isLoading: currentUserLoading,
+  } = useCurrentUser();
+  const { data: fetchedNotifications = [], isLoading } = useNotifications(
+    currentUser?.id
+  );
   useEffect(() => {
     mutateCurrentUser();
   }, [mutateCurrentUser]);
-
+  if (isLoading || currentUserLoading) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center">
+        <ClipLoader
+          color="#308CD8"
+          loading={isLoading}
+          size={50}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
+  }
   if (fetchedNotifications.length === 0) {
     return (
       <div className="p-6 text-center text-xl text-neutral-600">

@@ -32,7 +32,7 @@ const Explore = () => {
           <ClipLoader
             color="#308CD8"
             loading={isLoading}
-            size={70}
+            size={60}
             aria-label="Loading Spinner"
             data-testid="loader"
           />

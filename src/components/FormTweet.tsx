@@ -1,23 +1,26 @@
 import React, { useCallback, useState } from "react";
 import Avatar from "./Avatar";
-import useCurrentUser from "@/hooks/useCurrentUser";
 import TextInput from "./TextInput";
 import Button from "./Button";
 import usePosts from "@/hooks/usePosts";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import usePost from "@/hooks/usePost";
+import { ClipLoader } from "react-spinners";
 const FormTweet = ({
   postId,
   isComment,
+  currentUser,
+  isCurrentUserLoading,
 }: {
   postId?: string;
   isComment?: boolean;
+  currentUser?: Record<any, string>;
+  isCurrentUserLoading?: boolean;
 }) => {
   const [body, setBody] = useState("");
-  const { mutate: mutatePosts } = usePosts();
-  const { mutate } = usePost(postId as string);
-  const { data: currentUser } = useCurrentUser();
+  const { mutate: mutatePosts, isLoading: isLoadingPosts } = usePosts();
+  const { mutate, isLoading: isLoadingPost } = usePost(postId as string);
   const [isLoading, setIsLoading] = useState(false);
   const onSubmit = useCallback(async () => {
     if (body) {
@@ -43,16 +46,30 @@ const FormTweet = ({
           setIsLoading(false);
         });
     }
-  }, [body, postId, mutate]);
+  }, [body, postId, mutate, mutatePosts, isComment]);
+  if (isLoadingPosts || isLoadingPost || isCurrentUserLoading) {
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <ClipLoader
+          color="#308CD8"
+          loading={isLoading}
+          size={70}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className="flex w-full flex-col gap-4  border-y-[0.5px]  border-twitter-border px-3 py-2">
-      <div className="flex justify-center gap-3 ">
+    <div className="flex w-full flex-col gap-4 border-y-[0.5px] border-twitter-border px-3 py-2">
+      <div className="flex justify-center gap-3">
         <Avatar
-          userId={currentUser?.id}
+          userId={currentUser?.id as string}
           size="small"
           disabledLink
           isBorder
-        ></Avatar>
+        />
         <div className="flex flex-1 flex-col gap-5">
           <TextInput
             value={body}
@@ -69,7 +86,7 @@ const FormTweet = ({
                 onClick={onSubmit}
                 disabled={isLoading || !body}
               >
-                Tweeet
+                Tweet
               </Button>
             </div>
           </div>
