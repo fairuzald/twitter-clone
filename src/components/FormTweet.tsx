@@ -6,19 +6,33 @@ import Button from "./Button";
 import usePosts from "@/hooks/usePosts";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-const FormTweet = ({ postId }: { postId?: string }) => {
+import usePost from "@/hooks/usePost";
+const FormTweet = ({
+  postId,
+  isComment,
+}: {
+  postId?: string;
+  isComment?: boolean;
+}) => {
   const [body, setBody] = useState("");
-  const { mutate } = usePosts(postId as string);
+  const { mutate: mutatePosts } = usePosts();
+  const { mutate } = usePost(postId as string);
   const { data: currentUser } = useCurrentUser();
   const [isLoading, setIsLoading] = useState(false);
-  const onSubmit = useCallback(() => {
+  const onSubmit = useCallback(async () => {
     if (body) {
-      axios
-        .post(postId ? `/api/posts/${postId}` : "/api/posts", { body })
+      const url = isComment
+        ? `/api/comment?postId=${postId}`
+        : postId
+        ? `/api/posts/${postId}`
+        : "/api/posts";
+      await axios
+        .post(url, { body })
         .then(() => {
           setIsLoading(true);
-          toast.success("Post Uploaded");
+          toast.success(`${isComment ? "Comment" : "Post"} Uploaded`);
           mutate();
+          mutatePosts();
           setBody("");
         })
         .catch((error) => {
@@ -31,7 +45,7 @@ const FormTweet = ({ postId }: { postId?: string }) => {
     }
   }, [body, postId, mutate]);
   return (
-    <div className="flex w-full flex-col gap-4 px-3 py-2">
+    <div className="flex w-full flex-col gap-4  border-y-[0.5px]  border-twitter-border px-3 py-2">
       <div className="flex justify-center gap-3 ">
         <Avatar
           userId={currentUser?.id}
