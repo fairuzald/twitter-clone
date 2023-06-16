@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import ArrowIcon from "./icons/ArrowIcon";
 import { useRouter } from "next/router";
-import { type ReactNode } from "react";
 interface HeaderProps {
   showArrowButton?: boolean;
   label?: string;

@@ -9,7 +9,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="flex h-screen w-full bg-black">
       {/* Sidebar */}
       <Sidebar />
-      <div className="flex flex-1 flex-col border-x-[1px] h-fit border-twitter-border ">
+      <div className="flex flex-1 flex-col border-x-[1px] h-fit min-h-screen border-twitter-border ">
         {children}
       </div>
       <Followbar />
