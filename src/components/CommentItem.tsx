@@ -2,8 +2,6 @@ import { formatDistanceToNowStrict } from "date-fns";
 import React, { useMemo } from "react";
 import Avatar from "./Avatar";
 import CircleIcon from "./icons/CircleIcon";
-import CommentIcon from "./icons/CommentIcon";
-import LoveIcon from "./icons/LoveIcon";
 
 const CommentItem = ({ data }: { data: Record<string, any> }) => {
   const createdAt = useMemo(() => {
@@ -14,7 +12,7 @@ const CommentItem = ({ data }: { data: Record<string, any> }) => {
     return formatDistanceToNowStrict(new Date(data?.createdAt));
   }, [data?.createdAt]);
   return (
-    <div className="flex w-full border-y-[0.5px] border-twitter-border">
+    <div className="flex w-full items-start justify-start border-y-[0.5px] border-twitter-border py-2">
       <div className="flex w-full gap-4 px-4 py-2">
         <Avatar userId={data.user.id} size="small" isBorder />
 
@@ -31,7 +29,6 @@ const CommentItem = ({ data }: { data: Record<string, any> }) => {
           </div>
           {/* The body */}
           <p className="text-white">{data?.body}</p>
-       
         </div>
       </div>
     </div>

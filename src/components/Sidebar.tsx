@@ -45,8 +45,8 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <div className="my-4 flex w-fit flex-col items-center px-6 lg:w-[31%] lg:px-0">
-      <div className="flex w-fit flex-col gap-5">
+    <div className="my-4 flex w-fit h-screen relative flex-col items-center px-6 lg:w-[31%] lg:px-0">
+      <div className="flex w-fit flex-col gap-5 fixed">
         {/* Twitter Image */}
         <div className="flex w-fit items-center justify-center gap-4 rounded-full px-4 py-3 hover:bg-[#181818]">
           <Link href={"/"}>

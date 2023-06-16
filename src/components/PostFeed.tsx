@@ -9,7 +9,7 @@ const PostFeed = ({ userId }: { userId?: string }) => {
   const router = useRouter();
 
   return isLoading ? (
-    <div className="m-auto flex h-[calc(100vh-100px)] w-full flex-1 items-center justify-center">
+    <div className="m-auto flex h-[calc(100vh-400px)] w-full items-center justify-center">
       <ClipLoader
         color="#308CD8"
         loading={isLoading}

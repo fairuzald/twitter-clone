@@ -5,6 +5,9 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import useNotifications from "@/hooks/useNotification";
 import { useEffect } from "react";
 import { ClipLoader } from "react-spinners";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
 
 const Notifications = () => {
   // Using the useCurrentUser hook to get the current user data and its loading state
@@ -23,7 +26,14 @@ const Notifications = () => {
   useEffect(() => {
     mutateCurrentUser();
   }, [mutateCurrentUser]);
-
+  const router = useRouter();
+  const { data: sessionData, status } = useSession();
+  useEffect(() => {
+    if (status === "unauthenticated" && !sessionData) {
+      toast.error("You must login to use");
+      router.push("/login");
+    }
+  }, [router, status, sessionData]);
   return (
     <>
       {/* Page metadata */}
@@ -34,6 +44,7 @@ const Notifications = () => {
         faviconUrl="/logo-twitter-clone.png"
         logoUrl="https://www.datocms-assets.com/102850/1686900586-logo-twitter-clone.png"
       />
+      <Header showArrowButton label="Notifications" />
 
       {isLoading || currentUserLoading ? (
         // Show loading spinner if either the notifications or current user data is loading
@@ -58,7 +69,6 @@ const Notifications = () => {
             // Notifications found
             <>
               {/* Header component */}
-              <Header showArrowButton label="Notifications" />
 
               {/* Render the list of notifications */}
               <div className="flex flex-col">

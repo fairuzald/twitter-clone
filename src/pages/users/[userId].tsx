@@ -3,11 +3,13 @@ import Header from "@/components/Header";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useUser from "@/hooks/useUser";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import PostFeed from "@/components/PostFeed";
 import PageHead from "@/components/PageHead";
 import UserHero from "@/components/UserHero";
 import UserBio from "@/components/UserBio";
+import { useSession } from "next-auth/react";
+import { toast } from "react-hot-toast";
 
 const UserDetails = () => {
   // Get userId from guery page
@@ -19,7 +21,13 @@ const UserDetails = () => {
 
   // Fetch current user data using the useCurrentUser hook
   const { data: currentUser } = useCurrentUser();
-
+  const { data:sessionData, status } = useSession();
+  useEffect(() => {
+    if (status === "unauthenticated" && !sessionData) {
+      toast.error("You must login to use");
+      router.push("/login");
+    }
+  }, [router, status, sessionData]);
   return (
     <>
       <PageHead

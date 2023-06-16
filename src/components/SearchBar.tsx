@@ -26,10 +26,10 @@ const SearchBar = ({
   return (
     <div
       className={`w-full rounded-full border-[1px] ${
-        isFocused ? "border-twitter-blue" : "border-twitter-light-gray"
-      } flex items-center bg-twitter-dark-gray px-8 focus:border-twitter-blue`}
+        isFocused ? "border-twitter-blue bg-transparent" : "border-twitter-light-gray bg-[#202327]"
+      } flex items-center  px-8 focus:border-twitter-blue`}
     >
-      <div className="flex w-full items-center justify-between gap-4 py-3">
+      <div className="flex w-full items-center justify-between gap-4 py-2">
         {/* Search Icon */}
         <SearchIcon
           style={`${

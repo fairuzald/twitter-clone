@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ClipLoader } from "react-spinners";
 import Header from "@/components/Header";
 import SearchBar from "@/components/SearchBar";
 import UserProfile from "@/components/UserProfile";
 import useUsers from "@/hooks/useUsers";
 import PageHead from "@/components/PageHead";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
 
 const Explore = () => {
   const [search, setSearch] = useState("");
@@ -18,12 +21,20 @@ const Explore = () => {
   };
 
   // Handler mutation user length found
-  const foundUserLength = users.filter(
+  const foundUserLength = users?.filter(
     (user: Record<any, string>) =>
       user.name?.toLowerCase().includes(search.toLowerCase()) ||
       user.username?.toLowerCase().includes(search.toLowerCase())
   ).length;
 
+  const router = useRouter();
+  const { data:sessionData, status } = useSession();
+  useEffect(() => {
+    if (status === "unauthenticated" && !sessionData) {
+      toast.error("You must login to use");
+      router.push("/login");
+    }
+  }, [router, status, sessionData]);
   return (
     <>
       {/* Page Head for Metatags */}

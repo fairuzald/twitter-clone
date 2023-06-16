@@ -82,7 +82,7 @@ const FormTweet = ({
         </div>
       ) : (
         // Render the form for creating a tweet
-        <div className="flex w-full flex-col gap-4 border-b-[1px] border-twitter-border px-3 py-5">
+        <div className="flex w-full flex-col gap-4 border-b-[1px] border-twitter-border px-4 py-5">
           {/* CONTAINER */}
           <div className="flex justify-center gap-3">
             {/* AVATAR */}
