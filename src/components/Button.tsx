@@ -29,7 +29,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={`${colorEffect[color]} flex w-full items-center justify-center gap-4 rounded-full px-5 py-2 text-base transition duration-300 `}
+      className={`${colorEffect[color]} flex w-full items-center justify-center gap-4 rounded-full px-5 py-2 text-sm lg:text-base transition duration-300 `}
     >
       <p className="block text-base font-bold">{children}</p>
     </button>

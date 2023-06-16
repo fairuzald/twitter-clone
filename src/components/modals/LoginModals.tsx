@@ -39,7 +39,7 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
   }, [loginModal, email, password]);
 
   const body = (
-    <div className="flex flex-col gap-7">
+    <div className="flex flex-col gap-6 lg:gap-7">
       {providers &&
         Object.values(providers).map(
           (provider: any) =>
@@ -50,14 +50,14 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
               >
                 <button
                   onClick={() => signIn(provider.id)}
-                  className="flex w-full items-center justify-center gap-5 rounded-full bg-twitter-white px-8 py-2 text-black"
+                  className="flex w-full items-center justify-center gap-3 rounded-full bg-twitter-white px-4 py-2 text-black lg:gap-5 lg:px-8"
                 >
                   <Image
                     src="/google-icon.png"
                     width={64}
                     height={64}
                     alt="Google Icon"
-                    className="h-8 w-8"
+                    className="h-7 w-7 lg:h-8 lg:w-8"
                   />
                   Log in with {provider.name}
                 </button>
@@ -66,7 +66,7 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
         )}
       <div className="flex items-center justify-center gap-5">
         <span className="w-1/3 border-[1px] border-slate-300" />
-        <p className="text-slate-300 ">Or</p>
+        <p className="text-sm text-slate-300 md:text-base">Or</p>
         <span className="w-1/3 border-[1px] border-slate-300" />
       </div>
       <div className="flex w-full flex-col items-center justify-center gap-4">
@@ -98,22 +98,24 @@ const LoginModals: React.FC<LoginModalProps> = ({ providers }) => {
   const header = (
     <div className="flex flex-row items-center justify-between">
       {/* title */}
-      <h2 className="font-gantari-b items-center text-center text-2xl font-bold leading-10 tracking-wider sm:items-start sm:text-left">
+      <h2 className="items-center text-center text-[22px] font-bold leading-10 tracking-wider sm:items-start sm:text-left lg:text-2xl">
         Login
       </h2>
       {/* Close cross icon */}
-      <button onClick={loginModal.onClose} className=" h-5 w-5">
+      <button onClick={loginModal.onClose} className=" h-4 w-4 lg:h-5 lg:w-5">
         <CrossIcon style="w-full h-full fill-white" />
       </button>
     </div>
   );
   const footer = (
-    <p className="flex items-center justify-center gap-2 text-white">
-      First using Twitter ?{" "}
+    <div className="mx-auto flex items-center justify-center gap-3 text-sm lg:text-base">
+      <p className="flex items-center justify-center text-white">
+        First using Twitter ?{" "}
+      </p>
       <button onClick={onToggle}>
-        <span className="text-twitter-blue">Create an account</span>
+        <p className="text-twitter-blue">Create an account</p>
       </button>
-    </p>
+    </div>
   );
 
   return (

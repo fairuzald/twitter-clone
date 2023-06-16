@@ -32,7 +32,7 @@ const TextInput: React.FC<TextInputProps> = ({
       />
     </div>
   ) : (
-    <div className="flex w-full rounded-lg border-[1px] border-x-twitter-light-gray outline-none ">
+    <div className="flex w-full text-sm lg:text-base rounded-lg border-[1px] border-twitter-light-gray outline-none ">
       <input
         disabled={disabled}
         type={type}
