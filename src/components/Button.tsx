@@ -5,6 +5,8 @@ interface ButtonProps {
   color: "blue" | "white" | "trans-blue";
   onClick?: React.FormEventHandler<HTMLFormElement> | (() => void);
   disabled?: boolean;
+  onMouseEnter?: any;
+  onMouseLeave?: any;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -12,6 +14,8 @@ const Button: React.FC<ButtonProps> = ({
   color,
   onClick,
   disabled,
+  onMouseEnter,
+  onMouseLeave,
 }) => {
   const colorEffect = {
     blue: "bg-twitter-blue text-twitter-white hover:bg-twitter-blue-hover disabled:bg-twitter-blue-disabled",
@@ -23,9 +27,11 @@ const Button: React.FC<ButtonProps> = ({
     <button
       onClick={onClick as React.MouseEventHandler<HTMLButtonElement>}
       disabled={disabled}
-      className={`${colorEffect[color]} flex w-full text-base items-center justify-center gap-4 rounded-full px-5 py-2 transition duration-300 `}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={`${colorEffect[color]} flex w-full items-center justify-center gap-4 rounded-full px-5 py-2 text-base transition duration-300 `}
     >
-      <p className="text-base block font-bold">{children}</p>
+      <p className="block text-base font-bold">{children}</p>
     </button>
   );
 };

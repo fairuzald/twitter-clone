@@ -26,7 +26,7 @@ const Home = () => {
       <Header label="Home" />
       {/* Cliploader logic when try retrieve data useCurrentUser */}
       {isLoading ? (
-        <div className="flex h-screen w-full items-center justify-center">
+        <div className="m-auto flex h-fit min-h-[100vh-200px] w-full items-center justify-center">
           <ClipLoader
             color="#308CD8"
             loading={isLoading}
@@ -44,7 +44,7 @@ const Home = () => {
               {/* // POST TWEET */}
               <div className="flex flex-col items-center justify-center gap-4">
                 <FormTweet
-                buttonText="Tweet"
+                  buttonText="Tweet"
                   currentUser={currentUser}
                   isCurrentUserLoading={isLoading}
                 />

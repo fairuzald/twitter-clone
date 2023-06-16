@@ -49,7 +49,7 @@ const PostItem = ({
       if (!currentUser) {
         return loginModal.onOpen();
       }
-      return router.push(`posts/${postId}`);
+      return router.push(`/posts/${postId}`);
     },
     [loginModal, currentUser, postId, router]
   );
@@ -103,7 +103,7 @@ const PostItem = ({
           {/* THE BODY */}
           <p className="text-white">{data?.body}</p>
 
-          <div className="flex items-start justify-start gap-10">
+          <div className="flex items-start justify-start gap-x-10">
             {/* COMMENT SECTION */}
             <div className="flex items-center justify-center text-twitter-light-gray hover:text-twitter-blue">
               <button onClick={onComment}>
