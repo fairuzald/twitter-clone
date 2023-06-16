@@ -21,9 +21,9 @@ const Sidebar: React.FC = () => {
       auth: false,
     },
     {
-      href: "/",
+      href: "/explore",
       icon: <SearchIcon style="w-6 h-6 fill-twitter-white" />,
-      text: "Search",
+      text: "Explore",
       auth: true,
     },
     {
