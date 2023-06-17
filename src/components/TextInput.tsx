@@ -28,11 +28,11 @@ const TextInput: React.FC<TextInputProps> = ({
         onChange={(e) => {
           setValue(e.target.value);
         }}
-        className="peer h-full w-full resize-none bg-transparent px-4 opacity-100 outline-none ring-0 disabled:opacity-80"
+        className="peer h-full w-full text-sm lg:text-xl resize-none bg-transparent px-4 opacity-100 outline-none ring-0 disabled:opacity-80"
       />
     </div>
   ) : (
-    <div className="flex w-full rounded-lg border-[1px] border-x-twitter-light-gray outline-none ">
+    <div className="flex w-full text-sm lg:text-base rounded-lg border-[1px] border-twitter-light-gray outline-none ">
       <input
         disabled={disabled}
         type={type}

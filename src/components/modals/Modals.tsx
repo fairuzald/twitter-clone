@@ -27,10 +27,10 @@ const Modals: React.FC<ModalProps> = ({ isOpen, body, footer, header }) => {
               <div
                 className={`fixed ${
                   isOpen ? "opacity-100" : "pointer-events-none opacity-0"
-                } left-1/2 top-1/2 z-10 flex h-fit w-[60vw] max-w-[250px] -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center overflow-hidden rounded-[8px] bg-black p-9 text-white transition-opacity duration-500  sm:w-[60vw] sm:max-w-[450px] sm:items-start`}
+                } left-1/2 top-1/2 z-10 flex h-fit w-[90vw] max-w-[320px] -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center overflow-hidden rounded-[8px] bg-black p-9 text-white transition-opacity duration-500  sm:w-[60vw] sm:max-w-[450px] sm:items-start`}
               >
                 {/* Main content */}
-                <div className="flex w-full max-w-[300px] flex-col gap-8 sm:w-[calc(100%-0px)] sm:max-w-[488px]">
+                <div className="flex w-full max-w-[300px] flex-col gap-8 sm:w-full sm:max-w-[488px]">
                   {header}
                   {/* content */}
                   {body}
