@@ -41,7 +41,7 @@ const UserDetails = () => {
       <Header showArrowButton label={user?.name} />
 
       <div className="flex w-full flex-col">
-        <div className="flex w-full flex-col border-b border-twitter-border pb-6">
+        <div className="flex w-full flex-col border-b border-twitter-border pb-4 lg:pb-6">
           {/* User Hero */}
           <UserHero user={user} />
           {/* User Bio */}

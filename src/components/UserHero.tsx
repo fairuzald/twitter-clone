@@ -6,7 +6,7 @@ interface UserHeroProps {
 }
 const UserHero: React.FC<UserHeroProps> = ({ user }) => {
   return (
-    <div className="relative flex h-60 w-full bg-[#333639]">
+    <div className="relative flex h-40 lg:h-60 w-full bg-[#333639]">
       {/* Display the user's cover image */}
       {user && user.coverImage && (
         <Image
@@ -18,7 +18,7 @@ const UserHero: React.FC<UserHeroProps> = ({ user }) => {
         />
       )}
       {/* Display the user's avatar */}
-      <div className="absolute -bottom-16 left-4">
+      <div className="absolute -bottom-11 lg:-bottom-16 left-4">
         <Avatar userId={user?.id as string} size="large" isBorder />
       </div>
     </div>

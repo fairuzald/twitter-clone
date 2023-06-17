@@ -83,9 +83,9 @@ const PostItem = ({
         {/* TEXT CONTENT */}
         <div className="flex flex-1 flex-col gap-1 text-sm lg:text-base break-all">
           {/* USER IDENTITY */}
-          <div className="flex items-center  gap-x-2">
+          <div className="flex items-center gap-x-2">
             <button onClick={onClick}>
-              <h5 className="text-white hover:underline hover:underline-offset-2">
+              <h5 className="text-white hover:underline w-fit max-w-[70px] text-left truncate hover:underline-offset-2">
                 {data?.user.name}
               </h5>
             </button>
