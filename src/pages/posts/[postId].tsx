@@ -11,13 +11,12 @@ import { ClipLoader } from "react-spinners";
 import { useSession } from "next-auth/react";
 import { toast } from "react-hot-toast";
 
-
 const PostDetail = () => {
   const router = useRouter();
   const postId = router.query.postId;
   const { data: post, isLoading } = usePost(postId as string);
   const { data: currentUser } = useCurrentUser();
-  const { data:sessionData, status } = useSession();
+  const { data: sessionData, status } = useSession();
   useEffect(() => {
     if (status === "unauthenticated" && !sessionData) {
       toast.error("You must login to use");
@@ -38,8 +37,9 @@ const PostDetail = () => {
         faviconUrl="/logo-twitter-clone.png"
         logoUrl="https://www.datocms-assets.com/102850/1686900586-logo-twitter-clone.png"
       />
+      <Header showArrowButton label="Tweet" />
       {isLoading ? (
-        <div className="flex h-screen m-auto items-center justify-center">
+        <div className="m-auto flex h-screen items-center justify-center">
           <ClipLoader
             color="#308CD8"
             loading={isLoading}
@@ -50,7 +50,6 @@ const PostDetail = () => {
         </div>
       ) : (
         <>
-          <Header showArrowButton label="Tweet" />
           <PostItem data={post} />
           <FormTweet
             postId={postId as string}

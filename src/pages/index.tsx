@@ -57,7 +57,7 @@ const Home = () => {
           ) : (
             // Action for not log in
             <div className="flex flex-col items-center justify-center gap-4 border-y border-twitter-border p-12">
-              <h4 className="text-xl font-semibold text-white">
+              <h4 className="text-[19px] font-semibold text-white  lg:text-xl">
                 Welcome to Twitter
               </h4>
               <div className="flex gap-5">
