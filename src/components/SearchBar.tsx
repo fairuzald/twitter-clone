@@ -27,14 +27,14 @@ const SearchBar = ({
     <div
       className={`w-full rounded-full border-[1px] ${
         isFocused ? "border-twitter-blue bg-transparent" : "border-twitter-light-gray bg-[#202327]"
-      } flex items-center  px-8 focus:border-twitter-blue`}
+      } flex items-center  px-6 lg:px-8 focus:border-twitter-blue`}
     >
-      <div className="flex w-full items-center justify-between gap-4 py-2">
+      <div className="flex w-full items-center justify-between gap-4 py-1.5 lg:py-2">
         {/* Search Icon */}
         <SearchIcon
           style={`${
             isFocused ? "fill-twitter-blue" : "fill-twitter-light-gray"
-          } h-6 w-6`}
+          } w-5 h-5 lg:h-6 lg:w-6`}
         />
         {/* Input field */}
         <input
@@ -42,13 +42,13 @@ const SearchBar = ({
           onChange={(e) => setValue(e.target.value)}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          className="w-full border-none bg-transparent outline-none"
+          className="w-full border-none bg-transparent outline-none text-sm lg:text-base"
           placeholder={placeholder}
         />
         {/* Close Icon */}
         {value && (
           <button onClick={() => setValue("")} className="m-0 h-fit w-fit p-0">
-            <CircleCrossIcon style="fill-twitter-blue h-6 w-6" />
+            <CircleCrossIcon style="fill-twitter-blue -5 h-5 lg:h-6 lg:w-6" />
           </button>
         )}
       </div>

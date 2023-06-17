@@ -11,9 +11,9 @@ const UserProfile = ({ data }: { data: Record<any, string> }) => {
           {/* Avatar */}
           <Avatar size="base" disabledLink userId={data.id as string} />
           {/* Content Text*/}
-          <div className=" gap1 flex flex-col">
+          <div className=" gap-1 flex flex-col text-sm lg:text-base">
             <p className="font-semibold text-white">{data.name}</p>
-            <p className="text-neutral-500">@{data.username}</p>
+            <p className="text-twitter-light-gray">@{data.username}</p>
           </div>
         </div>
       </Link>

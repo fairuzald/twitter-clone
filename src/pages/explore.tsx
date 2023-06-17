@@ -69,12 +69,12 @@ const Explore = () => {
         </div>
       ) : (
         // Main users component will showed
-        <main className="w-full px-8 py-2">
+        <main className="w-full px-7 lg:px-8 py-2">
           {search ? (
             // Display filtered users based on search query
             <>
               {/* Mutation found users */}
-              <p className="py-4 text-center text-base font-bold text-twitter-blue">
+              <p className="py-4 text-center text-sm  lg:text-base font-bold text-twitter-blue">
                 {foundUserLength <= 0
                   ? "Not found users"
                   : foundUserLength === 1
@@ -109,7 +109,7 @@ const Explore = () => {
           {!search && offset < users.length && (
             // "Show more" button to load additional users
             <p
-              className="text-center text-twitter-blue hover:cursor-pointer"
+              className="text-center text-twitter-blue hover:cursor-pointer text-sm lg:text-base mt-2"
               onClick={onCount}
             >
               Show more

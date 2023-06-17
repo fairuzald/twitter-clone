@@ -16,7 +16,7 @@ const Avatar = ({
 }) => {
   const sizeStyle = {
     small: `w-8 h-8 lg:h-10 lg:w-10 ${isBorder && "border-[1px] border-slate-700"}`,
-    base: "h-12 w-12",
+    base: "w-10 h-10 lg:h-12 lg:w-12",
     medium: `h-24 w-24 ${isBorder && "border-[2px] border-black"}`,
     large: `w-32 h-32 ${isBorder && "border-[4px] border-black"}`,
   };
