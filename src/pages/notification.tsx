@@ -62,7 +62,7 @@ const Notifications = () => {
         <>
           {fetchedNotifications.length === 0 ? (
             // Show "No notifications" message if there are no notifications
-            <div className="p-6 text-center text-xl text-neutral-600">
+            <div className="p-6 text-center text-xl text-twitter-light-gray">
               No notifications
             </div>
           ) : (
@@ -76,10 +76,10 @@ const Notifications = () => {
                   (notification: Record<string, any>) => (
                     <div
                       key={notification.id}
-                      className="flex flex-row items-center gap-4 border-b-[1px] border-neutral-800 p-6"
+                      className="flex flex-row items-center gap-4 border-b-[1px] border-twitter-border p-[17px] lg:p-6"
                     >
-                      <TwitterIcon style="fill-white w-8 h-8" />
-                      <p className="text-white">{notification.body}</p>
+                      <TwitterIcon style="fill-white w-7 h-7 lg:w-8 lg:h-8" />
+                      <p className="text-white text-sm lg:text-base">{notification.body}</p>
                     </div>
                   )
                 )}
