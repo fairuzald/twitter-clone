@@ -81,7 +81,7 @@ const PostItem = ({
         <Avatar userId={data?.user.id} size="small" isBorder />
 
         {/* TEXT CONTENT */}
-        <div className="flex flex-1 flex-col gap-1">
+        <div className="flex flex-1 flex-col gap-1 text-sm lg:text-base break-all">
           {/* USER IDENTITY */}
           <div className="flex items-center  gap-x-2">
             <button onClick={onClick}>
@@ -107,7 +107,7 @@ const PostItem = ({
             {/* COMMENT SECTION */}
             <div className="flex items-center justify-center text-twitter-light-gray hover:text-twitter-blue">
               <button onClick={onComment}>
-                <CommentIcon style="w-9 h-9 fill-twitter-light-gray hover:fill-twitter-blue p-2 hover:bg-twitter-blue hover:bg-opacity-20 rounded-full" />
+                <CommentIcon style="w-8 h-8 lg:w-9 lg:h-9 fill-twitter-light-gray hover:fill-twitter-blue p-2 hover:bg-twitter-blue hover:bg-opacity-20 rounded-full" />
               </button>
               <p className="px-1 hover:text-twitter-light-gray">
                 {data?.comments?.length || 0}
@@ -118,9 +118,9 @@ const PostItem = ({
               <button onClick={onLike}>
                 {/* Conditional rendering of like button based on 'isLike' state */}
                 {isLike ? (
-                  <LoveIconFill style="w-9 h-9 fill-twitter-light-gray hover:fill-[#F91880] p-2 hover:bg-[#F91880] hover:bg-opacity-20 rounded-full" />
+                  <LoveIconFill style="w-8 h-8 lg:w-9 lg:h-9 fill-twitter-light-gray hover:fill-[#F91880] p-2 hover:bg-[#F91880] hover:bg-opacity-20 rounded-full" />
                 ) : (
-                  <LoveIcon style="w-9 h-9 fill-twitter-light-gray hover:fill-[#F91880] p-2 hover:bg-[#F91880] hover:bg-opacity-20 rounded-full" />
+                  <LoveIcon style="w-8 h-8 lg:w-9 lg:h-9 fill-twitter-light-gray hover:fill-[#F91880] p-2 hover:bg-[#F91880] hover:bg-opacity-20 rounded-full" />
                 )}
               </button>
               <p className="px-1 hover:text-twitter-light-gray">

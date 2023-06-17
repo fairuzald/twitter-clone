@@ -31,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
       onMouseLeave={onMouseLeave}
       className={`${colorEffect[color]} flex w-full items-center justify-center gap-4 rounded-full px-5 py-2 text-sm lg:text-base transition duration-300 `}
     >
-      <p className="block text-base font-bold">{children}</p>
+      <p className="block text-sm lg:text-base font-bold">{children}</p>
     </button>
   );
 };

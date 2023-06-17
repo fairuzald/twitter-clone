@@ -75,16 +75,16 @@ const FormTweet = ({
           <ClipLoader
             color="#308CD8"
             loading={isLoading}
-            size={70}
+            size={60}
             aria-label="Loading Spinner"
             data-testid="loader"
           />
         </div>
       ) : (
         // Render the form for creating a tweet
-        <div className="flex w-full flex-col gap-4 border-b-[1px] border-twitter-border px-4 py-5">
+        <div className="flex w-full flex-col border-b-[1px] border-twitter-border px-4 py-4 lg:py-5">
           {/* CONTAINER */}
-          <div className="flex justify-center gap-3">
+          <div className="flex justify-center gap-2 lg:gap-3">
             {/* AVATAR */}
             <Avatar
               userId={currentUser?.id as string}
@@ -93,7 +93,7 @@ const FormTweet = ({
               isBorder
             />
             {/* FORM TWEET */}
-            <form className="flex flex-1 flex-col gap-5">
+            <form className="flex flex-1 flex-col gap-3 lg:gap-5">
               {/* Text Input field */}
               <TextInput
                 value={body}
@@ -105,7 +105,7 @@ const FormTweet = ({
               <hr className="mx-auto w-[calc(100%-30px)] border-t-[1px] border-twitter-border opacity-100 transition peer-focus:opacity-80" />
               {/* Button Tweet */}
               <div className="flex w-full justify-end px-6">
-                <div className="w-28">
+                <div className="w-24 lg:w-28">
                   <Button
                     color="blue"
                     onClick={onSubmit}

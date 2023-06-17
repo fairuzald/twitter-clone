@@ -30,19 +30,19 @@ const Home = () => {
           <ClipLoader
             color="#308CD8"
             loading={isLoading}
-            size={70}
+            size={60}
             aria-label="Loading Spinner"
             data-testid="loader"
           />
         </div>
       ) : (
         // If the cliploader is done
-        <main className="flex  flex-col bg-black bg-gradient-to-b">
+        <main className="flex flex-col bg-black bg-gradient-to-b">
           {/* Action for logged in */}
           {currentUser ? (
             <div className="flex flex-col">
               {/* // POST TWEET */}
-              <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex flex-col items-center justify-center">
                 <FormTweet
                   buttonText="Tweet"
                   currentUser={currentUser}

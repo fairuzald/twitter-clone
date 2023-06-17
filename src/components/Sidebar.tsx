@@ -16,41 +16,41 @@ const Sidebar: React.FC = () => {
   const sideItemData = [
     {
       href: "/",
-      icon: <HomeIcon style="w-6 h-6 fill-twitter-white" />,
+      icon: <HomeIcon style="w-5 h-5 md:w-6 md:h-6 fill-twitter-white" />,
       text: "Home",
       auth: false,
     },
     {
       href: "/explore",
-      icon: <SearchIcon style="w-6 h-6 fill-twitter-white" />,
+      icon: <SearchIcon style="w-5 h-5 md:w-6 md:h-6 fill-twitter-white" />,
       text: "Explore",
       auth: true,
     },
     {
       href: "/notification",
       icon: currentUser?.hasNotification ? (
-        <NotificationBellIcon style="w-6 h-6 m-0 p-0 fill-white" />
+        <NotificationBellIcon style="w-5 h-5 md:w-6 md:h-6 m-0 p-0 fill-white" />
       ) : (
-        <NotificationIcon style="w-6 h-6 m-0 p-0 fill-white" />
+        <NotificationIcon style="w-5 h-5 md:w-6 md:h-6 m-0 p-0 fill-white" />
       ),
       text: "Notification",
       auth: true,
     },
     {
       href: `/users/${currentUser?.id}`,
-      icon: <ProfileIcon style="w-6 h-6 fill-twitter-white" />,
+      icon: <ProfileIcon style="w-5 h-5 md:w-6 md:h-6 fill-twitter-white" />,
       text: "Profile",
       auth: true,
     },
   ];
 
   return (
-    <div className="my-4 flex w-fit h-screen relative flex-col items-center px-6 lg:w-[31%] lg:px-0">
+    <div className="my-4 flex w-fit h-screen relative flex-col items-center px-6 md:px-7 md:w-[26%] lg:w-[31%] lg:px-0">
       <div className="flex w-fit flex-col gap-5 fixed">
         {/* Twitter Image */}
         <div className="flex w-fit items-center justify-center gap-4 rounded-full px-4 py-3 hover:bg-[#181818]">
           <Link href={"/"}>
-            <TwitterIcon style="w-6 h-6 fill-twitter-white" />
+            <TwitterIcon style="w-5 h-5 md:w-6 md:h-6 fill-twitter-white" />
           </Link>
         </div>
         {/* Mapping data */}
@@ -65,21 +65,13 @@ const Sidebar: React.FC = () => {
             />
           ))}
 
-          <Button
-            color="blue"
-            onClick={() => {
-              console.log("p");
-            }}
-          >
-            Tweet
-          </Button>
           {currentUser && (
             <SidebarItem
               onClick={() => {
                 signOut();
               }}
               icon={
-                <LogoutIcon style="w-6 h-6 fill-twitter-white rotate-180" />
+                <LogoutIcon style="w-5 h-5 md:w-6 md:h-6 fill-twitter-white rotate-180" />
               }
               text="Logout"
             />
