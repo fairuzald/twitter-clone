@@ -7,6 +7,7 @@ import { ClipLoader } from "react-spinners";
 const PostFeed = ({ userId }: { userId?: string }) => {
   const { data: posts = [], isLoading } = usePosts(userId as string);
   const router = useRouter();
+  console.log(posts)
 
   return isLoading ? (
     <div className="m-auto flex h-[calc(100vh-400px)] w-full items-center justify-center">
