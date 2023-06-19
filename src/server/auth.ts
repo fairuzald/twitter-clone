@@ -11,6 +11,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { env } from "@/env.mjs";
 import bcrypt from "bcrypt";
 import { prisma } from "@/server/db";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 // import axios from "axios";
 
 /**
@@ -40,7 +41,7 @@ declare module "next-auth" {
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions: NextAuthOptions = {
-  // adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma),
   callbacks: {
     async signIn({ user }) {
       if (user) {
